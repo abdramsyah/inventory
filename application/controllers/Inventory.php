@@ -131,7 +131,64 @@ class Inventory extends CI_Controller {
 			// $this->load->view('js_script');
 		}
 	}
-	// All inventory data end
+  // All inventory data end
+
+
+  /**
+   *	Peminjaman inventory data.
+   *	Showing all inventory data without any filtering.
+   * But still using pagination.
+   *
+   *	@param 		string 		$page
+   *	@return 	void
+   *
+   */
+  public function peminjaman($page = "")
+  {
+    $loggedinuser = $this->ion_auth->user()->row();
+    // Not logged in, redirect to home
+    if (!$this->ion_auth->logged_in()) {
+      redirect('auth/login/inventory', 'refresh');
+    }
+    // Logged in
+    else {
+      $this->data['data_list']  = $this->inventory_model->get_inventory();
+
+      // Set pagination
+      $config['base_url']         = base_url('inventory/peminjaman');
+      $config['use_page_numbers'] = TRUE;
+      $config['total_rows']       = count($this->data['data_list']->result());
+      $config['per_page']         = 15;
+      $this->pagination->initialize($config);
+
+      // Get datas and limit based on pagination settings
+      if ($page == "") {
+        $page = 1;
+      }
+      $this->data['data_list'] = $this->inventory_model->get_inventory(
+        "",
+        $config['per_page'],
+        ($page - 1) * $config['per_page']
+      );
+      // $this->data['last_query'] = $this->db->last_query();
+      $this->data['pagination'] = $this->pagination->create_links();
+
+      // set the flash data error message if there is one
+      $this->data['message'] = (validation_errors()) ? validation_errors() :
+        $this->session->flashdata('message');
+      // var_dump($this->data);
+      // exit();
+
+      $this->load->view('partials/_alte_header', $this->data);
+      $this->load->view('partials/_alte_menu');
+      $this->load->view('inv_data/all_data_pinjam');
+      $this->load->view('partials/_alte_footer');
+      $this->load->view('inv_data/js');
+      // $this->load->view('js_script');
+    }
+  }
+	// Peminjaman inventory data end
+
 
 	/**
 	*	Inventory by category.
@@ -896,7 +953,183 @@ class Inventory extends CI_Controller {
 			redirect('inventory', 'refresh');
 		}
 	}
-	// Delete data end
+  // Delete data end
+
+  /**
+   *	Pinjam Data
+   *	If there's data sent, Pinjam 
+   *	Else, redirect to categories
+   *
+   *	@param 		string 		$id
+   *	@return 	void
+   *
+   */
+  public function pinjam($code)
+  {
+    // Jika tidak login, kembalikan ke halaman utama
+    $loggedinuser = $this->ion_auth->user()->row();
+    // var_dump($loggedinuser);
+    // echo $loggedinuser->id;
+    if (!$this->ion_auth->logged_in()) {
+      redirect('auth/login/inventory', 'refresh');
+    }
+    // Jika login
+    else {
+      // set the flash data error message if there is one
+      $this->data['message'] = (validation_errors()) ? validation_errors() :
+        $this->session->flashdata('message');
+
+      // check if there's valid input
+      // if (isset($_POST) && !empty($_POST)) {
+
+      // input validation rules
+      $this->form_validation->set_rules('id', 'ID', 'trim|numeric|required');
+
+      // validation run
+      // if ($this->form_validation->run() === TRUE) {
+      $data = array(
+        'pinjam' => '1',
+        'user_id' => $loggedinuser->id,
+      );
+      // echo ">>> 1";
+      // exit();
+
+      // check to see if we are updating the data
+      if ($this->inventory_model->update_inventory_by_code($code, $data)) {
+        $this->session->set_flashdata(
+          'message',
+          $this->config->item('message_start_delimiter', 'ion_auth')
+            . "Peminjaman Inventory dalam proses!" .
+            $this->config->item('message_end_delimiter', 'ion_auth')
+        );
+      } else {
+        $this->session->set_flashdata(
+          'message',
+          $this->config->item('error_start_delimiter', 'ion_auth')
+            . "Peminjaman Inventory Failed!" .
+            $this->config->item('error_end_delimiter', 'ion_auth')
+        );
+      }
+      // }
+      // }
+      // Always redirect no matter what!
+      redirect('inventory/all', 'refresh');
+    }
+  }
+  // Pinjam data end
+
+
+
+
+
+
+
+  public function setujui($code)
+  {
+    // Jika tidak login, kembalikan ke halaman utama
+    $loggedinuser = $this->ion_auth->user()->row();
+    // var_dump($loggedinuser);
+    // echo $loggedinuser->id;
+    if (!$this->ion_auth->logged_in()) {
+      redirect('auth/login/inventory', 'refresh');
+    }
+    // Jika login
+    else {
+      // set the flash data error message if there is one
+      $this->data['message'] = (validation_errors()) ? validation_errors() :
+        $this->session->flashdata('message');
+
+      // check if there's valid input
+      // if (isset($_POST) && !empty($_POST)) {
+
+      // input validation rules
+      $this->form_validation->set_rules('id', 'ID', 'trim|numeric|required');
+
+      // validation run
+      // if ($this->form_validation->run() === TRUE) {
+      $data = array(
+        'pinjam' => '3',
+      );
+      // echo ">>> 1";
+      // exit();
+
+      // check to see if we are updating the data
+      if ($this->inventory_model->update_inventory_by_code($code, $data)) {
+        $this->session->set_flashdata(
+          'message',
+          $this->config->item('message_start_delimiter', 'ion_auth')
+            . "Peminjaman Inventory dalam proses!" .
+            $this->config->item('message_end_delimiter', 'ion_auth')
+        );
+      } else {
+        $this->session->set_flashdata(
+          'message',
+          $this->config->item('error_start_delimiter', 'ion_auth')
+            . "Peminjaman Inventory Failed!" .
+            $this->config->item('error_end_delimiter', 'ion_auth')
+        );
+      }
+      // }
+      // }
+      // Always redirect no matter what!
+      redirect('inventory/all', 'refresh');
+    }
+  }
+  // Pinjam data end
+
+
+  public function tolak($code)
+  {
+    // Jika tidak login, kembalikan ke halaman utama
+    $loggedinuser = $this->ion_auth->user()->row();
+    // var_dump($loggedinuser);
+    // echo $loggedinuser->id;
+    if (!$this->ion_auth->logged_in()) {
+      redirect('auth/login/inventory', 'refresh');
+    }
+    // Jika login
+    else {
+      // set the flash data error message if there is one
+      $this->data['message'] = (validation_errors()) ? validation_errors() :
+        $this->session->flashdata('message');
+
+      // check if there's valid input
+      // if (isset($_POST) && !empty($_POST)) {
+
+      // input validation rules
+      $this->form_validation->set_rules('id', 'ID', 'trim|numeric|required');
+
+      // validation run
+      // if ($this->form_validation->run() === TRUE) {
+      $data = array(
+        'pinjam' => '4',
+      );
+      // echo ">>> 1";
+      // exit();
+
+      // check to see if we are updating the data
+      if ($this->inventory_model->update_inventory_by_code($code, $data)) {
+        $this->session->set_flashdata(
+          'message',
+          $this->config->item('message_start_delimiter', 'ion_auth')
+            . "Peminjaman Inventory dalam proses!" .
+            $this->config->item('message_end_delimiter', 'ion_auth')
+        );
+      } else {
+        $this->session->set_flashdata(
+          'message',
+          $this->config->item('error_start_delimiter', 'ion_auth')
+            . "Peminjaman Inventory Failed!" .
+            $this->config->item('error_end_delimiter', 'ion_auth')
+        );
+      }
+      // }
+      // }
+      // Always redirect no matter what!
+      redirect('inventory/all', 'refresh');
+    }
+  }
+  // Pinjam data end
 }
 
 /* End of Inventory.php */

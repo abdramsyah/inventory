@@ -32,11 +32,19 @@
 	            </span>
 	          </a>
 	          <ul class="treeview-menu">
-	            <li><a href="<?php echo base_url('inventory') ?>"><i class="fa fa-plus"></i> Add New</a></li>
+	            <?php
+              $loggedinuser = $this->ion_auth->user()->row();
+              if ($loggedinuser->status != 2) :
+              ?>
+	              <li><a href="<?php echo base_url('inventory') ?>"><i class="fa fa-plus"></i> Add New</a></li>
+	            <?php endif ?>
 	            <li><a href="<?php echo base_url('inventory/all') ?>"><i class="fa fa-list-alt"></i> All Data</a></li>
+
+	            <li><a href="<?php echo base_url('inventory/peminjaman') ?>"><i class="fa fa-list-alt"></i> All Data Pinjam</a></li>
 	            <li><a href="<?php echo base_url('inventory/by_category') ?>"><i class="fa fa-star-o"></i> By Category</a></li>
 	            <li><a href="<?php echo base_url('inventory/by_location') ?>"><i class="fa fa-map-pin"></i> By Location</a></li>
 	            <li><a href="<?php echo base_url('inventory/search') ?>"><i class="fa fa-search"></i> Search</a></li>
+
 	          </ul>
 	        </li>
 	        <li class="header">MASTER</li>

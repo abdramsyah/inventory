@@ -28,6 +28,80 @@ class Inventory_model extends CI_Model
 	*	@return 	array 		$datas
 	*
 	*/
+
+  public function get_inventory_pinjam($id = '', $limit = '', $start = '')
+  {
+    $this->db->select(
+      $this->datas_table . ".id, " .
+        $this->datas_table . ".code, " .
+        $this->datas_table . ".brand, " .
+        $this->datas_table . ".model, " .
+        $this->datas_table . ".serial_number, " .
+        $this->datas_table . ".status, " .
+        $this->datas_table . ".color, " .
+        $this->datas_table . ".length, " .
+        $this->datas_table . ".width, " .
+        $this->datas_table . ".height, " .
+        $this->datas_table . ".weight, " .
+        $this->datas_table . ".pinjam, " .
+        $this->datas_table . ".user_id, " .
+        $this->datas_table . ".price, " .
+        $this->datas_table . ".date_of_purchase, " .
+        $this->datas_table . ".photo, " .
+        $this->datas_table . ".thumbnail, " .
+        $this->datas_table . ".description, " .
+        $this->datas_table . ".deleted, " .
+        $this->datas_table . ".category_id, " .
+        $this->categories_table . ".name AS category_name, " .
+        $this->datas_table . ".location_id, " .
+        $this->locations_table . ".name AS location_name, " .
+        $this->users_table . ".username, " .
+        $this->users_table . ".first_name, " .
+        $this->users_table . ".last_name"
+    );
+    $this->db->from($this->datas_table);
+
+    // join categories table
+    $this->db->join(
+      $this->categories_table,
+      $this->datas_table . '.category_id = ' . $this->categories_table . '.id',
+      'left'
+    );
+
+    // join locations table
+    $this->db->join(
+      $this->locations_table,
+      $this->datas_table . '.location_id = ' . $this->locations_table . '.id',
+      'left'
+    );
+
+    // join user table
+    $this->db->join(
+      $this->users_table,
+      $this->datas_table . '.created_by = ' . $this->users_table . '.username',
+      'left'
+    );
+    $loggedinuser = $this->ion_auth->user()->row();
+    $this->db->where($this->datas_table . '.deleted', '0');
+    $this->db->where($this->datas_table . '.pinjam', $loggedinuser->id);
+
+    // if ID provided
+    if ($id != '') {
+      $this->db->where($this->datas_table . '.id', $id);
+    }
+
+    // if limit and start provided
+    if ($limit != "") {
+      $this->db->limit($limit, $start);
+    }
+
+    // order by
+    $this->db->order_by($this->datas_table . '.id', 'desc');
+    $datas = $this->db->get();
+    return $datas;
+  }
+
+
 	public function get_inventory($id='',$limit='', $start='')
 	{
 		$this->db->select(
@@ -42,6 +116,8 @@ class Inventory_model extends CI_Model
 			$this->datas_table.".width, ".
 			$this->datas_table.".height, ".
 			$this->datas_table.".weight, ".
+      $this->datas_table . ".pinjam, " .
+      $this->datas_table . ".user_id, " .
 			$this->datas_table.".price, ".
 			$this->datas_table.".date_of_purchase, ".
 			$this->datas_table.".photo, ".
@@ -586,6 +662,35 @@ class Inventory_model extends CI_Model
 		return FALSE;
 	}
 
+
+
+  public function setujui_data($code, $datas)
+  {
+    // user and datetime
+    $datas['updated_by'] = $this->loggedinuser->username;
+    $this->db->set('updated_on', 'NOW()', FALSE);
+    $this->db->set('pinjam', 3, FALSE);
+
+    $this->db->where('code', $code);
+    if ($this->db->update($this->datas_table, $datas)) {
+      return TRUE;
+    }
+    return FALSE;
+  }
+  public function tolak_data($code, $datas)
+  {
+    // user and datetime
+    $datas['updated_by'] = $this->loggedinuser->username;
+    $this->db->set('updated_on', 'NOW()', FALSE);
+    $this->db->set('pinjam', 4, FALSE);
+
+    $this->db->where('code', $code);
+    if ($this->db->update($this->datas_table, $datas)) {
+      return TRUE;
+    }
+    return FALSE;
+  }
+ 
 
 
 }

@@ -49,9 +49,11 @@
 			</a>
 
 			<div class="navbar-custom-menu">
-				<ul class="nav navbar-nav">
-					<?php 
-					$loggedinuser = $this->ion_auth->user()->row(); 
+				<ul class="nav navbar-nav"> 
+					<?php
+          $loggedinuser = $this->ion_auth->user()->row();
+          // var_dump($loggedinuser->status);
+          // exit();
 					if (!empty($loggedinuser)) :
 					?>
 					<!-- User Menu -->

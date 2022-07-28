@@ -273,3 +273,110 @@ DELIMITER ;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+/*!40111 SET SQL_NOTES=@
+
+- id: int
+- code: varchar
+- category_id: int
+- location_id: int
+- brand: varchar
+- model: varchar
+- serial_number: varchar
+- status: int
+- length: int
+- width: int
+- height: int
+- weight: int
+- color: varchar
+- price: int
+- date_of_purchase: date
+- photo: text
+- thumbnail: text
+- description: text
+- deleted: tinyin
+- created_by: varchar
+- created_on: datetime
+- updated_by: varchar
+- updated_on: datetime
+
+
+
+
+category
+- id: int
+- code: varchar
+- name: varchar
+- description: text
+- deleted: tinyint
+- created_by: varchar
+- created_on: datetime
+- updated_by: varchar
+- updated_on: datetime
+
+lokasio
+- id: int
+- code: varchar
+- name: varchar
+- detail: text
+- photo: text
+- thumbnail: text
+- deleted: tinyint
+- created_by: varchar
+- created_on: datetime
+- updated_by: varchar
+- updated_on: datetime
+
+REATE TABLE `inv_status: 
+- id: int
+- name: varchar
+- description: text
+- deleted: tinyint
+- created_by: varchar
+- created_on: datetime
+- updated_by: varchar
+- updated_on: datetime
+
+- REATE TABLE `master_color: 
+- id: tinyint
+- name: varchar
+- deleted: tinyint
+- created_by: varchar
+- created_on: datetime
+- updated_by: varchar
+- updated_on: datetime
+  PRIMARY KEY 
+
+  - REATE TABLE `inv_status: 
+- id: int
+- name: varchar
+- description: text
+- deleted: tinyint
+- created_by: varchar
+- created_on: datetime
+- updated_by: varchar
+- updated_on: datetime
+  PRIMARY KEY 
+  
+  
+  
+  
+  kenapa saya pake dfd pak karena aplikasi saya itu tidak pakai framework/library seperti laravel atau codeigneter
+apliasi saya itu native php pak, idak bebentuk OOP object oriented programming
+itulah saya pakai dfd pak karena aplikasi php native
+
+
+email | password
+abd@gmail.com | pengaju   1
+sandro@gmail.com | admin  2
+habib@gmail.com | kadin 3
+jayah@gmail.com | kabag 4
+sodikin@gmail.com | sodikin
+
+dah coba aja dulu
+
+Set your username: git config --global user.name "sonafilkainy"
+Set your email address: git config --global user.email "nuy.kim25@gmail.com"
+\
+
+
+ami200156  */;

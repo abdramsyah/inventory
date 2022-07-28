@@ -39,6 +39,7 @@
 	                <th>Category</th>
 	                <th>Location</th>
 	                <th>Photo</th>
+	                <th>Status</th>
 	                <th>#</th>
 	              </tr>
 	            </thead>
@@ -52,16 +53,32 @@
 	                    <td><?php echo $data->location_name; ?></td>
 	                    <td><?php if ($data->thumbnail != "") : ?><a href="<?php echo base_url('assets/uploads/images/inventory/') . $data->photo ?>" data-fancybox data-caption="<?php echo $data->brand . " " . $data->model ?>">
 	                          <img src="<?php echo base_url('assets/uploads/images/inventory/') . $data->thumbnail ?>" alt="<?php echo $data->brand . " " . $data->model ?>"></a><?php endif ?></td>
+	                    <td>
+	                      <?php
+                        if ($data->pinjam == 1) {
+                          echo "pengajuan peminjaman dalam proses";
+                        } elseif ($data->pinjam == 2) {
+                          echo "di pinjam";
+                        } elseif ($data->pinjam == 3) {
+                          echo "peminjaman di setujui";
+                        } elseif ($data->pinjam == 4) {
+                          echo "peminjaman di tolak";
+                        }
+
+                        ?>
+	                    </td>
 	                    <td width="15%">
-	                      <form action="<?php echo base_url('inventory/delete/' . $data->code) ?>" method="post" autocomplete="off">
-	                        <div class="btn-group-vertical">
-	                          <a class="btn btn-sm btn-default" href="<?php echo base_url('inventory/detail/' . $data->code) ?>" role="button"><i class="fa fa-eye"></i> Detail</a>
-	                          <a class="btn btn-sm btn-primary" href="<?php echo base_url('inventory/edit/' . $data->code) ?>" role="button"><i class="fa fa-pencil"></i> Edit</a>
-	                          <a class="btn btn-sm btn-info" href="<?php echo base_url('inventory/pinjam/' . $data->code) ?>" role="button"><i class="fa fa-pencil"></i> pinjam</a>
-	                          <input type="hidden" name="id" value="<?php echo $data->id; ?>">
-	                          <button type="submit" class="btn btn-sm btn-danger" role="button" onclick="return confirm('Delete this data?')"><i class="fa fa-trash"></i> Delete</button>
-	                        </div>
-	                      </form>
+	                      <div class="btn-group-vertical">
+	                        <a class="btn btn-sm btn-default" href="<?php echo base_url('inventory/detail/' . $data->code) ?>" role="button"><i class="fa fa-eye"></i> Detail</a>
+	                        <?php
+                          $loggedinuser = $this->ion_auth->user()->row();
+                          if ($loggedinuser->status == 3) :
+                          ?>
+	                          <a class="btn btn-sm btn-info" href="<?php echo base_url('inventory/setujui/' . $data->code) ?>" role="button"><i class="fa fa-pencil"></i>Setujui</a>
+	                          <a class="btn btn-sm btn-danger" href="<?php echo base_url('inventory/tolak/' . $data->code) ?>" role="button"><i class="fa fa-pencil"></i> Tolak</a>
+	                        <?php endif ?>
+	                        <input type="hidden" name="id" value="<?php echo $data->id; ?>">
+	                      </div>
 	                    </td>
 	                  </tr>
 	                <?php endforeach ?>
