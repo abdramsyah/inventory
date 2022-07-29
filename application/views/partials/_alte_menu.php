@@ -58,11 +58,11 @@
 	            <i class="fa fa-map-marker"></i> <span>Locations</span>
 	          </a>
 	        </li>
-	        <li>
+	        <!-- <li>
 	          <a href="<?php echo base_url('color') ?>">
 	            <i class="fa fa-tint"></i> <span>Color</span>
 	          </a>
-	        </li>
+	        </li> -->
 	        <?php if ($this->ion_auth->is_admin()) : ?>
 	          <li>
 	            <a href="<?php echo base_url('status') ?>">
