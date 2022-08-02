@@ -73,7 +73,7 @@
 	          <li class="header">SETTINGS</li>
 	          <li>
 	            <a href="<?php echo base_url('auth') ?>">
-	              <i class="fa fa-users"></i> <span>Users</span>
+	              <i class="fa fa-users"></i> <span>Pegawai</span>
 	            </a>
 	          </li>
 	        <?php endif ?>

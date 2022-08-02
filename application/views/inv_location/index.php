@@ -36,21 +36,15 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="name" class="control-label col-md-2">* Name</label>
+								<label for="name" class="control-label col-md-2">* Nama Ruangan</label>
 								<div class="col-md-8 <?php if (form_error('name')) {echo "has-error";} ?>">
 									<input type="text" name="name" id="name" class="form-control" value="<?php echo set_value('name'); ?>" placeholder="Location Name" required>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="detail" class="control-label col-md-2">Detail</label>
+								<label for="detail" class="control-label col-md-2">Keterangan/Detail</label>
 								<div class="col-md-8">
 									<textarea name="detail" id="detail" class="form-control text_editor" rows="4" style="resize:vertical; min-height:100px; max-height:200px;"><?php echo set_value('detail'); ?></textarea>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="photo" class="control-label col-md-2">Photo</label>
-								<div class="col-md-8 <?php if (form_error('photo')) {echo "has-error";} ?>">
-									<input type="file" name="photo" id="photo" class="form-control" placeholder="Location Photo">
 								</div>
 							</div>
 							<div class="form-group">
@@ -88,7 +82,6 @@
 									<th>Code</th>
 									<th>Name</th>
 									<th>Detail</th>
-									<th>Photo</th>
 									<th>#</th>
 								</tr>
 							</thead>
@@ -99,8 +92,8 @@
 									<td><?php echo $data->code; ?></td>
 									<td><?php echo $data->name; ?></td>
 									<td><?php echo $data->detail; ?></td>
-									<td><?php if ($data->thumbnail!="") :?><a href="<?php echo base_url('assets/uploads/images/locations/').$data->photo ?>" data-fancybox data-caption="<?php echo $data->name ?>">
-										<img src="<?php echo base_url('assets/uploads/images/locations/').$data->thumbnail ?>" alt="<?php echo $data->name ?>"></a><?php endif ?></td>
+									<!-- <td><?php if ($data->thumbnail!="") :?><a href="<?php echo base_url('assets/uploads/images/locations/').$data->photo ?>" data-fancybox data-caption="<?php echo $data->name ?>">
+										<img src="<?php echo base_url('assets/uploads/images/locations/').$data->thumbnail ?>" alt="<?php echo $data->name ?>"></a><?php endif ?></td> -->
 									<td width="15%">
 										<form action="<?php echo base_url('locations/delete/'.$data->id) ?>" method="post" autocomplete="off">
 											<div class="btn-group-vertical">
