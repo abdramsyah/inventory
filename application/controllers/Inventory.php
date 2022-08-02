@@ -134,6 +134,47 @@ class Inventory extends CI_Controller {
   // All inventory data end
 
 
+  public function laporan($page = "")
+  {
+    // Not logged in, redirect to home
+    if (!$this->ion_auth->logged_in()) {
+      redirect('auth/login/inventory', 'refresh');
+    }
+    // Logged in
+    else {
+      $this->data['data_list']  = $this->inventory_model->get_inventory();
+
+      // Set pagination
+      $config['base_url']         = base_url('inventory/all');
+      $config['use_page_numbers'] = TRUE;
+      $config['total_rows']       = count($this->data['data_list']->result());
+      $config['per_page']         = 15;
+      $this->pagination->initialize($config);
+
+      // Get datas and limit based on pagination settings
+      if ($page == "") {
+        $page = 1;
+      }
+      $this->data['data_list'] = $this->inventory_model->get_inventory(
+        "",
+        $config['per_page'],
+        ($page - 1) * $config['per_page']
+      );
+      // $this->data['last_query'] = $this->db->last_query();
+      $this->data['pagination'] = $this->pagination->create_links();
+
+      // set the flash data error message if there is one
+      $this->data['message'] = (validation_errors()) ? validation_errors() :
+        $this->session->flashdata('message');
+
+      $this->load->view('partials/_alte_header_laporan', $this->data);
+      $this->load->view('inv_data/laporan');
+      // $this->load->view('partials/_alte_footer');
+      $this->load->view('inv_data/js');
+      $this->load->view('js_script');
+    }
+  }
+  // All inventory data end
   /**
    *	Peminjaman inventory data.
    *	Showing all inventory data without any filtering.

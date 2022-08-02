@@ -54,6 +54,11 @@
 	          </a>
 	        </li>
 	        <li>
+	          <a href="<?php echo base_url('inventory/laporan') ?>" target="_blank">
+	            <i class="fa fa-star"></i> <span>Laporan</span>
+	          </a>
+	        </li>
+	        <li>
 	          <a href="<?php echo base_url('locations') ?>">
 	            <i class="fa fa-map-marker"></i> <span>Locations</span>
 	          </a>
