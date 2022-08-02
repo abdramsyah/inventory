@@ -5,7 +5,7 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 	  <h1 align="center">
-	    Laporan Inventory Dinas Pe
+	    Laporan Inventory Dinas Kepemudaan dan Olahraga
 	    <small></small>
 	  </h1>
 	</section>
