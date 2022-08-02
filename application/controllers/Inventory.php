@@ -502,9 +502,6 @@ class Inventory extends CI_Controller {
 			$this->form_validation->set_rules('color', 'Color', 'trim|addslashes');
 			$this->form_validation->set_rules('new_color', 'New Color', 'alpha_numeric_spaces|trim|addslashes');
 			$this->form_validation->set_rules('length', 'Length', 'numeric|trim');
-			$this->form_validation->set_rules('width', 'Width', 'numeric|trim');
-			$this->form_validation->set_rules('height', 'Height', 'numeric|trim');
-			$this->form_validation->set_rules('weight', 'Weight', 'numeric|trim');
 			$this->form_validation->set_rules('price', 'Price', 'numeric|trim');
 			$this->form_validation->set_rules('date_of_purchase', 'Date of Purchase', 'trim');
 			$this->form_validation->set_rules('descriptions', 'Descriptions', 'trim|addslashes');
@@ -540,9 +537,6 @@ class Inventory extends CI_Controller {
 						'status'           => $this->input->post('status2'),
 						'color'            => $color,
 						'length'           => $this->input->post('length'),
-						'width'            => $this->input->post('width'),
-						'height'           => $this->input->post('height'),
-						'weight'           => $this->input->post('weight'),
 						'price'            => $this->input->post('price'),
 						'date_of_purchase' => $this->input->post('date_of_purchase'),
 						'description'      => $this->input->post('description'),
