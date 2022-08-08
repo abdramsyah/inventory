@@ -260,6 +260,12 @@
 	                  <textarea name="description" id="description" class="form-control text_editor" rows="4" style="resize:vertical; min-height:100px; max-height:200px;"></textarea>
 	                </div>
 	              </div>
+	              <div class="form-group">
+	                <label for="photo" class="control-label col-md-2">Photo</label>
+	                <div class="col-md-10">
+	                  <input type="file" name="photo" id="photo" class="form-control">
+	                </div>
+	              </div>
 	            </fieldset>
 	          </form>
 	        </div>

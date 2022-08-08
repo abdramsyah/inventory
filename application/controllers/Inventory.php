@@ -581,6 +581,7 @@ class Inventory extends CI_Controller {
 						'price'            => $this->input->post('price'),
 						'date_of_purchase' => $this->input->post('date_of_purchase'),
 						'description'      => $this->input->post('description'),
+            'photo'            => $this->input->post('photo'),
 						'deleted'          => '0',
 					);
 

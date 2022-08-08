@@ -34,7 +34,7 @@
 	              <th>Location</th>
 	              <th>Photo</th>
 	              <th>Status</th>
-	              <th>#</th>
+
 	            </tr>
 	          </thead>
 	          <tbody>
@@ -61,19 +61,7 @@
 
                       ?>
 	                  </td>
-	                  <td width="15%">
-	                    <div class="btn-group-vertical">
-	                      <a class="btn btn-sm btn-default" href="<?php echo base_url('inventory/detail/' . $data->code) ?>" role="button"><i class="fa fa-eye"></i> Detail</a>
-	                      <?php
-                        $loggedinuser = $this->ion_auth->user()->row();
-                        if ($loggedinuser->status == 3) :
-                        ?>
-	                        <a class="btn btn-sm btn-info" href="<?php echo base_url('inventory/setujui/' . $data->code) ?>" role="button"><i class="fa fa-pencil"></i>Setujui</a>
-	                        <a class="btn btn-sm btn-danger" href="<?php echo base_url('inventory/tolak/' . $data->code) ?>" role="button"><i class="fa fa-pencil"></i> Tolak</a>
-	                      <?php endif ?>
-	                      <input type="hidden" name="id" value="<?php echo $data->id; ?>">
-	                    </div>
-	                  </td>
+	                  
 	                </tr>
 	              <?php endforeach ?>
 	            <?php else : ?>
