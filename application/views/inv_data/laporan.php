@@ -34,6 +34,7 @@
 	              <th>Location</th>
 	              <th>Photo</th>
 	              <th>Status</th>
+	              <th>Nama Peminjam</th>
 	              <th>Tanggal Pinjam</th>
 
 	            </tr>
@@ -63,6 +64,7 @@
                       ?>
 	                  </td>
 
+	                  <td><?php echo $data->nama_pinjam; ?></td>
 	                  <td><?php echo $data->tgl_pinjam; ?></td>
 	                </tr>
 

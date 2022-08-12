@@ -1027,6 +1027,7 @@ class Inventory extends CI_Controller {
         'pinjam' => '1',
         'user_id' => $loggedinuser->id,
         'tgl_pinjam' => date("Y-m-d"),
+        'nama_pinjam' => $loggedinuser->first_name,
       );
       // echo ">>> 1";
       // exit();
