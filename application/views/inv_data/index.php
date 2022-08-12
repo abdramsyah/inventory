@@ -247,8 +247,8 @@
 	              <div class="form-group">
 	                <label for="date_of_purchase" class="control-label col-md-2">Date of Purchase</label>
 	                <div class="col-md-4">
-	                  <div class="input-group">
-	                    <input type="text" name="date_of_purchase" id="date_of_purchase" class="form-control datepicker" maxlength="10">
+	                  <div class="input-group">   
+	                    <input type="text" name=" date_of_purchase" id="date_of_purchase" class="form-control datepicker" maxlength="10">
 	                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 	                  </div>
 	                </div>

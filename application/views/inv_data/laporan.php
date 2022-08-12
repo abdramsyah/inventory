@@ -34,6 +34,7 @@
 	              <th>Location</th>
 	              <th>Photo</th>
 	              <th>Status</th>
+	              <th>Tanggal Pinjam</th>
 
 	            </tr>
 	          </thead>
@@ -61,8 +62,10 @@
 
                       ?>
 	                  </td>
-	                  
+
+	                  <td><?php echo $data->tgl_pinjam; ?></td>
 	                </tr>
+
 	              <?php endforeach ?>
 	            <?php else : ?>
 	              <tr>

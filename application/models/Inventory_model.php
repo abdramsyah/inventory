@@ -19,31 +19,30 @@ class Inventory_model extends CI_Model
 		$this->loggedinuser     = $this->ion_auth->user()->row();
 	}
 
-	/**
-	*	Get Inventory
-	*	from inv inv_datas table
-	*	sort by id desc
-	*
-	*	@param 		string 		$id
-	*	@return 	array 		$datas
-	*
-	*/
-
+  /**
+   *	Get Inventory
+   *	from inv inv_datas table
+   *	sort by id desc
+   *
+   *	@param 		string 		$id
+   *	@return 	array 		$datas
+   *
+   */
   public function get_inventory_pinjam($id = '', $limit = '', $start = '')
   {
     $this->db->select(
       $this->datas_table . ".id, " .
-        $this->datas_table . ".code, " .
-        $this->datas_table . ".brand, " .
-        $this->datas_table . ".model, " .
-        $this->datas_table . ".serial_number, " .
-        $this->datas_table . ".status, " .
-        $this->datas_table . ".color, " .
-        $this->datas_table . ".length, " .
-        $this->datas_table . ".width, " .
-        $this->datas_table . ".height, " .
-        $this->datas_table . ".weight, " .
-        $this->datas_table . ".pinjam, " .
+      $this->datas_table . ".code, " .
+      $this->datas_table . ".brand, " .
+      $this->datas_table . ".model, " .
+      $this->datas_table . ".serial_number, " .
+      $this->datas_table . ".status, " .
+      $this->datas_table . ".color, " .
+      $this->datas_table . ".length, " .
+      $this->datas_table . ".width, " .
+      $this->datas_table . ".height, " .
+      $this->datas_table . ".weight, " .
+      $this->datas_table . ".pinjam, " .
         $this->datas_table . ".user_id, " .
         $this->datas_table . ".price, " .
         $this->datas_table . ".date_of_purchase, " .
@@ -81,9 +80,8 @@ class Inventory_model extends CI_Model
       $this->datas_table . '.created_by = ' . $this->users_table . '.username',
       'left'
     );
-    $loggedinuser = $this->ion_auth->user()->row();
+
     $this->db->where($this->datas_table . '.deleted', '0');
-    $this->db->where($this->datas_table . '.pinjam', $loggedinuser->id);
 
     // if ID provided
     if ($id != '') {
@@ -102,6 +100,8 @@ class Inventory_model extends CI_Model
   }
 
 
+
+
 	public function get_inventory($id='',$limit='', $start='')
 	{
 		$this->db->select(
@@ -118,6 +118,8 @@ class Inventory_model extends CI_Model
 			$this->datas_table.".weight, ".
       $this->datas_table . ".pinjam, " .
       $this->datas_table . ".user_id, " .
+      $this->datas_table . ".tgl_pinjam, " .
+      $this->datas_table . ".tgl_balik, " .
 			$this->datas_table.".price, ".
 			$this->datas_table.".date_of_purchase, ".
 			$this->datas_table.".photo, ".
@@ -233,7 +235,7 @@ class Inventory_model extends CI_Model
 			$this->datas_table.'.created_by = '.$this->users_table.'.username',
 			'left');
 
-		$this->db->where($this->datas_table.'.deleted', '0');
+		// $this->db->where($this->datas_table.'.deleted', '0');
 
 		// if code provided
 		if ($code!='') {

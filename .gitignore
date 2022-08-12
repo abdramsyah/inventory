@@ -4,45 +4,17 @@
 3: setujui
 4: tolak
 
+status
+1 
+2
+3 kadin dan sekretaris
 
 
+Revisi dari bu Nita : 1. Ubah tulisan dinas pemuda dan olahraga provinsi sumsel ditampilan awal menjadi "Dinas Pemuda dan Olahraga Provinsi Sumatera Selatan"
+2. Untuk tgl jgn di iinput tapi misal di klik langsung muncul kalender jadi otomatis
 
+Revisi dari bu Desi : 1. Tambahkan keterangan waktu pada perbaikan(inventory status in refair) dan pada peminjaman. Mulai dari tgl berpa / hingga tgl berapa
 
-kadin cetak laporan aset
+Revisi dari bu Rika : 1. Tambahkan Nama peminjam, tgl peminjaman, tgl pengembalian, dan kondisi barang saat di pinjam dan dikembalikan pada laporan
 
-
-admin
-login s
-4.2.2.5	Diagram Activity Admin Mengelola Inventory s
-4.2.2.6	Diagram Activity Admin Mengelola Categories s
-4.2.2.7	Diagram Activity Admin Mengelola Locations s
-4.2.2.8	Diagram Activity Admin Mengelola Inventory Status s
-4.2.2.9	Diagram Activity Admin Mengelola Laporan s
-4.2.2.9	Diagram Activity Admin Mengelola Pegawai s
-
-Pegawai
-login s 
-4.2.2.10	Diagram Activity Pegawai Mengelola Inventory s
-4.2.2.11	Diagram Activity Pegawai Mengelola Pinjam Aset s
-4.2.2.12 Diagram Activity Pegawai Mengelola Data Pegawai s
-
-sekdin 
-login s
-4.2.2.14	 Diagram Activity Sekdin Menyetujui/ Memverifikasi Peminjaman s
-4.2.2.15 Diagram Activity Sekdin Mengelola/Mencetak Laporan s
-
-Kadin
-login s
-4.2.2.15 Diagram Activity Sekdin Mengelola/Mencetak Laporan s
-
-
-
-1.	Admin melakukan login pada sistem dengan memasukan username dan password.
-2.	Admin mengelola data proposal pengajuan pada Dinas Pemuda dan Olahraga Provinsi Sumatera Selatan.
-3.	Admin dapat melihat Pengajuan Proposal Sponsorship.
-4.	Admin dapat mengelola Surat Balasan.
-5.	Pemohon melakukan login pada sistem dengan memasukan username dan password.
-6.	Pemohon dapat melakukan pengisian data pengajuan proposal sponsorship pada Dinas Pemuda dan Olahraga Provinsi Sumatera Selatan.  
-7.	Pemohon menerima Surat Balasan.  
-8.	Kabid dan Kadin melakukan login ke dalam sistem dengan memasukan username dan password.
-9.	Kabid dan Kadin dapat melakukan persetujuan proposal.
+Revisi dari pak soni : blum diuji..

@@ -217,7 +217,7 @@ class Inventory extends CI_Controller {
       // set the flash data error message if there is one
       $this->data['message'] = (validation_errors()) ? validation_errors() :
         $this->session->flashdata('message');
-      // var_dump($this->data);
+      // var_dump($this->data['data_list']);
       // exit();
 
       $this->load->view('partials/_alte_header', $this->data);
@@ -1026,6 +1026,7 @@ class Inventory extends CI_Controller {
       $data = array(
         'pinjam' => '1',
         'user_id' => $loggedinuser->id,
+        'tgl_pinjam' => date("Y-m-d"),
       );
       // echo ">>> 1";
       // exit();
