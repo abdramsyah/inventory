@@ -11,7 +11,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
  *	
  */
 
-$config['site_name']    = "dinas pemuda dan olahraga provinsi sumsel";
+$config['site_name']    = "Dinas Pemuda dan Olahraga Provinsi Sumatera Selatan"; 
 $config['site_slogan']  = "Integrated Inventory System V3";
 $config['site_author']  = "MI";
 $config['site_company'] = "MI";
+
+

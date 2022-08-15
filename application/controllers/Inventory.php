@@ -1029,8 +1029,6 @@ class Inventory extends CI_Controller {
         'tgl_pinjam' => date("Y-m-d"),
         'nama_pinjam' => $loggedinuser->first_name,
       );
-      // echo ">>> 1";
-      // exit();
 
       // check to see if we are updating the data
       if ($this->inventory_model->update_inventory_by_code($code, $data)) {
