@@ -37,6 +37,8 @@
 	              <th>Nama Peminjam</th>
 	              <th>Tanggal Pinjam</th>
 	              <th>Tanggal Balik</th>
+	              <th>Kondisi barang di pinjam</th>
+	              <th>Kondisi barang di kembalikan</th>
 
 	            </tr>
 	          </thead>
@@ -61,13 +63,27 @@
                       } elseif ($data->pinjam == 4) {
                         echo "peminjaman di tolak";
                       }
-
                       ?>
 	                  </td>
-
 	                  <td><?php echo $data->nama_pinjam; ?></td>
 	                  <td><?php echo $data->tgl_pinjam; ?></td>
 	                  <td><?php echo $data->tgl_balik; ?></td>
+	                  <td>
+	                    <?php
+                      if ($data->status == 1) {
+                        echo "Baik";
+                      } elseif ($data->status == 3) {
+                        echo "Rusak";
+                      }
+                      ?>
+	                  <td>
+	                    <?php
+                      if ($data->status == 1) {
+                        echo "Baik";
+                      } elseif ($data->status == 3) {
+                        echo "Rusak";
+                      }
+                      ?>
 	                </tr>
 
 	              <?php endforeach ?>
