@@ -36,6 +36,7 @@
 	              <th>Status</th>
 	              <th>Nama Peminjam</th>
 	              <th>Tanggal Pinjam</th>
+	              <th>Tanggal Balik</th>
 
 	            </tr>
 	          </thead>
@@ -66,6 +67,7 @@
 
 	                  <td><?php echo $data->nama_pinjam; ?></td>
 	                  <td><?php echo $data->tgl_pinjam; ?></td>
+	                  <td><?php echo $data->tgl_balik; ?></td>
 	                </tr>
 
 	              <?php endforeach ?>
