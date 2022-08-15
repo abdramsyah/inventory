@@ -1004,8 +1004,7 @@ class Inventory extends CI_Controller {
   {
     // Jika tidak login, kembalikan ke halaman utama
     $loggedinuser = $this->ion_auth->user()->row();
-    // var_dump($loggedinuser);
-    // echo $loggedinuser->id;
+   
     if (!$this->ion_auth->logged_in()) {
       redirect('auth/login/inventory', 'refresh');
     }
@@ -1023,12 +1022,23 @@ class Inventory extends CI_Controller {
 
       // validation run
       // if ($this->form_validation->run() === TRUE) {
+
+      $date = date("Y-m-d");
+      $date = strtotime($date);
+      $date1 = strtotime("+7 day", $date);
+      // echo $date1;
+      // echo " ||| ";
+      // echo date('Y-m-d', $date1);
+      // echo " ||| ";
       $data = array(
         'pinjam' => '1',
         'user_id' => $loggedinuser->id,
         'tgl_pinjam' => date("Y-m-d"),
+        'tgl_balik' => date('Y-m-d', $date1),
         'nama_pinjam' => $loggedinuser->first_name,
       );
+
+      // var_dump($data);
       // echo ">>> 1";
       // exit();
 
