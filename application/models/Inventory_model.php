@@ -44,6 +44,11 @@ class Inventory_model extends CI_Model
       $this->datas_table . ".weight, " .
       $this->datas_table . ".pinjam, " .
         $this->datas_table . ".user_id, " .
+      $this->datas_table . ".tgl_pinjam, " .
+      $this->datas_table . ".tgl_balik, " .
+      $this->datas_table . ".nama_pinjam, " .
+      $this->datas_table . ".tgl_rusak, " .
+      $this->datas_table . ".tgl_benar, " .
         $this->datas_table . ".price, " .
         $this->datas_table . ".date_of_purchase, " .
         $this->datas_table . ".photo, " .
@@ -121,6 +126,8 @@ class Inventory_model extends CI_Model
       $this->datas_table . ".tgl_pinjam, " .
       $this->datas_table . ".tgl_balik, " .
       $this->datas_table . ".nama_pinjam, " .
+      $this->datas_table . ".tgl_rusak, " .
+      $this->datas_table . ".tgl_benar, " .
 			$this->datas_table.".price, ".
 			$this->datas_table.".date_of_purchase, ".
 			$this->datas_table.".photo, ".

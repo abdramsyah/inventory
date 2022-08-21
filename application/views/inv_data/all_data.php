@@ -39,6 +39,9 @@
 	                <th>Category</th>
 	                <th>Location</th>
 	                <th>Photo</th>
+	                <th>Kondisi</th>
+	                <th>Tanggal Rusak</th>
+	                <th>Tanggal Selesai Perbaikan</th>
 	                <th>#</th>
 	              </tr>
 	            </thead>
@@ -52,6 +55,17 @@
 	                    <td><?php echo $data->location_name; ?></td>
 	                    <td><?php if ($data->thumbnail != "") : ?><a href="<?php echo base_url('assets/uploads/images/inventory/') . $data->photo ?>" data-fancybox data-caption="<?php echo $data->brand . " " . $data->model ?>">
 	                          <img src="<?php echo base_url('assets/uploads/images/inventory/') . $data->thumbnail ?>" alt="<?php echo $data->brand . " " . $data->model ?>"></a><?php endif ?></td>
+	                    <td>
+	                      <?php
+                        if ($data->status == 1 || $data->status == 2) {
+                          echo "Baik";
+                        } elseif ($data->status == 3) {
+                          echo "Rusak";
+                        }
+                        ?>
+	                    </td>
+	                    <td><?php echo $data->tgl_rusak; ?> </td>
+	                    <td><?php echo $data->tgl_benar; ?> </td>
 	                    <td width="15%">
 	                      <form action="<?php echo base_url('inventory/delete/' . $data->code) ?>" method="post" autocomplete="off">
 	                        <div class="btn-group-vertical">

@@ -39,6 +39,8 @@
 	              <th>Tanggal Balik</th>
 	              <th>Kondisi barang di pinjam</th>
 	              <th>Kondisi barang di kembalikan</th>
+	              <th>Tanggal Rusak</th>
+	              <th>Tanggal Selesai Perbaikan</th>
 
 	            </tr>
 	          </thead>
@@ -70,12 +72,13 @@
 	                  <td><?php echo $data->tgl_balik; ?></td>
 	                  <td>
 	                    <?php
-                      if ($data->status == 1) {
+                      if ($data->status == 1 || $data->status == 2) {
                         echo "Baik";
                       } elseif ($data->status == 3) {
                         echo "Rusak";
                       }
                       ?>
+	                  </td>
 	                  <td>
 	                    <?php
                       if ($data->status == 1) {
@@ -84,6 +87,9 @@
                         echo "Rusak";
                       }
                       ?>
+	                  </td>
+	                  <td><?php echo $data->tgl_rusak; ?> </td>
+	                  <td><?php echo $data->tgl_benar; ?> </td>
 	                </tr>
 
 	              <?php endforeach ?>

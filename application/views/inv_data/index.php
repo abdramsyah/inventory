@@ -195,6 +195,18 @@
 	                </div>
 	              </div>
 	              <div class="form-group">
+	                <label for="tgl_repair" class="control-label col-md-2">Tanggal Repair</label>
+	                <div class="col-md-4">
+	                  <input type="date" name="tgl_repair" id="tgl_repair" class="form-control" value="<?php echo date("Y-m-d"); ?>">
+	                </div>
+	              </div>
+	              <div class=" form-group">
+	                <label for="tgl_drepair" class="control-label col-md-2">Tanggal Selesai Repair</label>
+	                <div class="col-md-4">
+	                  <input type="date" name="tgl_drepair" id="tgl_drepair" class="form-control">
+	                </div>
+	              </div>
+	              <div class=" form-group">
 	                <label for="location" class="control-label col-md-2">* Location</label>
 	                <div class="col-md-4">
 	                  <select name="location" id="location" class="form-control select2 required" style="width:100%">
@@ -247,7 +259,7 @@
 	              <div class="form-group">
 	                <label for="date_of_purchase" class="control-label col-md-2">Date of Purchase</label>
 	                <div class="col-md-4">
-	                  <div class="input-group">   
+	                  <div class="input-group">
 	                    <input type="text" name=" date_of_purchase" id="date_of_purchase" class="form-control datepicker" maxlength="10">
 	                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 	                  </div>

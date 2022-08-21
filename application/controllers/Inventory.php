@@ -564,6 +564,30 @@ class Inventory extends CI_Controller {
 					$data_new_color = array('name' => $color, );
 					$this->color_model->insert_color($data_new_color);
 				}
+        $status = $this->input->post('status2');
+        echo $this->input->post('status2');
+
+        // tgl_repair
+        // tgl_drepair
+/**
+ * 
+ * time stuff is good 
+ */
+
+        $tgl_repair = $this->input->post('tgl_repair');
+        $tgl_drepair = $this->input->post('tgl_drepair');
+        if ($status == 1) {
+          // $tgl_repair = null;
+          // $tgl_drepair = null;
+        } else if ($status == 2) {
+          // $tgl_repair = null;
+          // $tgl_drepair = null;
+        } else if ($status == 3) {
+          $tgl_repair;
+          $tgl_drepair;
+        }
+
+        // exit();
 
 				// validation run
 				if ($this->form_validation->run() === TRUE) {
@@ -576,6 +600,8 @@ class Inventory extends CI_Controller {
 						'model'            => $this->input->post('model'),
 						'serial_number'    => $this->input->post('serial_number'),
 						'status'           => $this->input->post('status2'),
+            'tgl_rusak'        => $tgl_repair,
+            'tgl_benar'        => $tgl_drepair,
 						'color'            => $color,
 						'length'           => $this->input->post('length'),
 						'price'            => $this->input->post('price'),
