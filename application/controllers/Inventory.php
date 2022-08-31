@@ -600,14 +600,14 @@ class Inventory extends CI_Controller {
 						'model'            => $this->input->post('model'),
 						'serial_number'    => $this->input->post('serial_number'),
 						'status'           => $this->input->post('status2'),
-            'tgl_rusak'        => $tgl_repair,
-            'tgl_benar'        => $tgl_drepair,
+            			'tgl_rusak'        => $tgl_repair,
+            			'tgl_benar'        => $tgl_drepair,
 						'color'            => $color,
 						'length'           => $this->input->post('length'),
 						'price'            => $this->input->post('price'),
 						'date_of_purchase' => $this->input->post('date_of_purchase'),
 						'description'      => $this->input->post('description'),
-            'photo'            => $this->input->post('photo'),
+            			'photo'            => $this->input->post('photo'),
 						'deleted'          => '0',
 					);
 
@@ -865,7 +865,9 @@ class Inventory extends CI_Controller {
 						'weight'           => $this->input->post('weight'),
 						'price'            => $this->input->post('price'),
 						'date_of_purchase' => $this->input->post('date_of_purchase'),
-						'description'      => $this->input->post('description')
+						'description'      => $this->input->post('description'),
+						'tgl_rusak'      => $this->input->post('tgl_rusak'),
+						'tgl_benar'      => $this->input->post('tgl_benar')
 					);
 
 					// check to see if we are updating the data
